@@ -1,0 +1,24 @@
+<!-- chat.component.html -->
+<div *ngIf="userToChatWith !== null">
+    <button (click)="createChat(userToChatWith)">Create Chat with User {{ userToChatWith }}</button>
+  </div>
+  
+  <div *ngIf="selectedChatId">
+    <h2>Chat Messages</h2>
+    <div *ngFor="let message of messages">
+      <div>{{ message.sender }}: {{ message.content }}</div>
+    </div>
+    <textarea [(ngModel)]="newMessage" placeholder="Type a message"></textarea>
+    <button (click)="sendMessage()">Send</button>
+  </div>
+  
+  <!-- Display list of chats -->
+  <div *ngIf="!selectedChatId">
+    <h2>Chats</h2>
+    <ul>
+      <li *ngFor="let chat of chats" (click)="selectChat(chat.id)">
+        Chat with {{ chat.user2 }}
+      </li>
+    </ul>
+  </div>
+  
